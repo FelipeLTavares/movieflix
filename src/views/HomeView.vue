@@ -1,15 +1,12 @@
 <template>
   <main>
-    <!-- <MediaList /> -->
-    <HeaderComponent />
     <MediaLister :medias="medias" :addFavorite="addFavorito" />
     <ListPager :currentPage="page" :totalPages="totalPages" :onPageChange="fetchAllMedias" />
   </main>
 </template>
 
 <script lang="ts">
-import HeaderComponent from '@/components/HeaderComponent.vue'
-import ListPager from '@/components/ListPager.vue'
+import ListPager from '@/components/ListPaginator.vue'
 import MediaLister from '@/components/MediaLister.vue'
 import { useAllMediasStore } from '@/stores/allMedias'
 import { useFavoritesStore } from '@/stores/favorites'
@@ -21,8 +18,7 @@ export default {
 
   components: {
     MediaLister,
-    ListPager,
-    HeaderComponent
+    ListPager
   },
 
   setup() {

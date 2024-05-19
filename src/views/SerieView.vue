@@ -1,12 +1,10 @@
 <template>
-  <div class="w-full h-screen bg-indigo-300">
-    <HeaderComponent />
+  <main class="w-full h-screen bg-indigo-300">
     <MediaDetails :backgroundImageStyle="backgroundImageStyle" :media="serie" />
-  </div>
+  </main>
 </template>
 
 <script lang="ts">
-import HeaderComponent from '../components/HeaderComponent.vue'
 import MediaDetails from '@/components/MediaDetails.vue'
 import { useMediaStore } from '@/stores/media'
 import { storeToRefs } from 'pinia'
@@ -17,7 +15,6 @@ export default {
   name: 'MediaView',
 
   components: {
-    HeaderComponent,
     MediaDetails
   },
 
@@ -30,7 +27,6 @@ export default {
 
   setup() {
     const route = useRoute()
-
     const mediaStore = useMediaStore()
 
     const { media } = storeToRefs(mediaStore)

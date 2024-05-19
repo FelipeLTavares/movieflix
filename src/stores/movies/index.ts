@@ -25,12 +25,5 @@ export const useMoviesStore = defineStore('movies', {
         this.loading = false;
       }
     },
-  },
-  getters: {
-    allMovies: ({ movies }) => movies,
-    isLoading: ({ loading }) => loading,
-    error: ({ error }) => error,
-    currentPage: ({ page }) => page,
-    totalPages: ({ totalPages }) => totalPages
-  },
+  }
 });

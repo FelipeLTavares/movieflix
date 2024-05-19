@@ -1,13 +1,11 @@
 <template>
   <main>
-    <HeaderComponent />
     <MediaLister :medias="allFavorites" :deleteMedia="deleteFavorite" :showDelete="true" />
   </main>
 </template>
 
 <script lang="ts">
 import MediaLister from '@/components/MediaLister.vue'
-import HeaderComponent from '@/components/HeaderComponent.vue'
 import { storeToRefs } from 'pinia'
 import { onMounted } from 'vue'
 import { useFavoritesStore } from '@/stores/favorites'
@@ -16,8 +14,7 @@ export default {
   name: 'FilmesView',
 
   components: {
-    MediaLister,
-    HeaderComponent
+    MediaLister
   },
 
   setup() {

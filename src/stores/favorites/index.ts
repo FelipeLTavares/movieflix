@@ -47,8 +47,5 @@ export const useFavoritesStore = defineStore('favorites', {
         setAllFavorites(allFavorites: any[]) {
             this.allFavorites = allFavorites;
         }
-    },
-    getters: {
-        // getFavorites: (state) => state.allFavorites,
-    },
+    }
 });

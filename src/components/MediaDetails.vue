@@ -20,21 +20,18 @@
       </div>
 
       <div class="flex gap-4">
-        <button
-          type="button"
-          class="bg-red-600 px-4 py-2 rounded-md font-bold"
-          @click="goToHomepage(media.homepage)"
-        >
+        <GenericButton :type="'knowMore'" class="font-bold" @click="goToHomepage(media.homepage)">
           Saiba mais
-        </button>
+        </GenericButton>
 
-        <button
+        <GenericButton
+          :type="'saveFavorite'"
           v-if="show"
-          class="bg-gray-400 px-4 py-2 rounded-md font-bold"
+          class="font-bold"
           @click="addFavorito(media)"
         >
           Salvar
-        </button>
+        </GenericButton>
       </div>
     </div>
   </div>
@@ -44,9 +41,13 @@
 import { useFavoritesStore } from '@/stores/favorites'
 import { storeToRefs } from 'pinia'
 import { defineComponent, ref, watch, type PropType, onUpdated } from 'vue'
+import GenericButton from './shared/GenericButton.vue'
 
 export default defineComponent({
   name: 'MediaDetails',
+  components: {
+    GenericButton
+  },
   props: {
     media: {
       type: Object as PropType<{

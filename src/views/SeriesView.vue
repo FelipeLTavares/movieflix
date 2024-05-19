@@ -1,16 +1,13 @@
 <template>
   <main>
-    <!-- <MediaList /> -->
-    <HeaderComponent />
     <MediaLister :medias="series" />
     <ListPager :currentPage="page" :totalPages="totalPages" :onPageChange="fetchAllSeries" />
   </main>
 </template>
 
 <script lang="ts">
-import ListPager from '@/components/ListPager.vue'
+import ListPager from '@/components/ListPaginator.vue'
 import MediaLister from '@/components/MediaLister.vue'
-import HeaderComponent from '@/components/HeaderComponent.vue'
 import { useSeriesStore } from '@/stores/series'
 import { storeToRefs } from 'pinia'
 import { onMounted } from 'vue'
@@ -20,8 +17,7 @@ export default {
 
   components: {
     MediaLister,
-    ListPager,
-    HeaderComponent
+    ListPager
   },
 
   setup() {

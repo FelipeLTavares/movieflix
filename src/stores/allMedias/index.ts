@@ -13,7 +13,7 @@ export const useAllMediasStore = defineStore('allMedias', {
     actions: {
         async fetchAllMedias(page: number = 1) {
             this.loading = true;
-            this.error = null; // Reset error before fetching
+            this.error = null;
             try {
                 const response = await axios.get(`${CONSTANTS.API_URL}/3/trending/all/day?api_key=${CONSTANTS.API_KEY}&sort_by=popularity.desc&page=${page}`);
                 this.allMedias = response.data.results;

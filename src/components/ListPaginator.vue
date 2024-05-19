@@ -1,28 +1,35 @@
 <template>
   <div class="flex justify-center items-center space-x-2 mt-4">
-    <button
+    <GenericButton
+      :type="'pageButton'"
       @click="goToPage(currentPage - 1)"
       :disabled="currentPage === 1"
-      class="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
+      class="disabled:opacity-50"
     >
       Anterior
-    </button>
+    </GenericButton>
     <span class="px-4 py-2 bg-white rounded border">
       Página {{ currentPage }} de {{ totalPages }}
     </span>
-    <button
+    <GenericButton
+      :type="'pageButton'"
       @click="goToPage(currentPage + 1)"
       :disabled="currentPage === totalPages"
-      class="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
+      class="disabled:opacity-50"
     >
       Próxima
-    </button>
+    </GenericButton>
   </div>
 </template>
 
 <script lang="ts">
+import GenericButton from './shared/GenericButton.vue'
+
 export default {
   name: 'ListPaginator',
+  components: {
+    GenericButton
+  },
   props: {
     currentPage: {
       type: Number,

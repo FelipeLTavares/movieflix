@@ -17,8 +17,5 @@ export const useMediaStore = defineStore('media', {
                 console.log(error)
             }
         },
-    },
-    getters: {
-        getMedia: (state) => state.media
     }
 });
