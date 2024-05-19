@@ -14,7 +14,7 @@
       </div>
 
       <img
-        :src="getMovieImageUrl(media.poster_path)"
+        :src="getMovieImageUrl(media.poster_path || media.poster)"
         alt=""
         class="w-full h-full object-cover"
         @click="navigateToMedia(media.id, media.title ? 'filme' : 'serie')"
@@ -58,6 +58,8 @@ export default {
 
   setup() {
     const router = useRouter()
+
+    
 
     const navigateToMedia = (mediaId, mediaType) => {
       router.push({ name: mediaType === 'filme' ? 'filme' : 'serie', params: { id: mediaId } })

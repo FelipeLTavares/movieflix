@@ -49,6 +49,7 @@ export default {
       serie.value.sinopse = media?.value.overview
       serie.value.background = media?.value.backdrop_path
       serie.value.homepage = media?.value.homepage
+      serie.value.poster = media?.value.poster_path
     })
 
     const backgroundImageStyle = computed(() => ({

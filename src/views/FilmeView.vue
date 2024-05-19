@@ -49,6 +49,7 @@ export default {
       movie.value.sinopse = media?.value.overview
       movie.value.background = media?.value.backdrop_path
       movie.value.homepage = media?.value.homepage
+      movie.value.poster = media?.value.poster_path
     })
 
     const backgroundImageStyle = computed(() => ({

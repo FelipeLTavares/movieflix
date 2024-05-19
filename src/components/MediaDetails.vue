@@ -25,17 +25,25 @@
           class="bg-red-600 px-4 py-2 rounded-md font-bold"
           @click="goToHomepage(media.homepage)"
         >
-          Trailer
+          Saiba mais
         </button>
 
-        <button class="bg-gray-400 px-4 py-2 rounded-md font-bold">Salvar</button>
+        <button
+          v-if="show"
+          class="bg-gray-400 px-4 py-2 rounded-md font-bold"
+          @click="addFavorito(media)"
+        >
+          Salvar
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
+import { useFavoritesStore } from '@/stores/favorites'
+import { storeToRefs } from 'pinia'
+import { defineComponent, watch, ref, onUpdated } from 'vue'
 
 export default defineComponent({
   name: 'MediaDetails',
@@ -50,6 +58,7 @@ export default defineComponent({
         subTitle: string
         sinopse: string
         homepage: string
+        poster: string
       }>,
       required: true
     },
@@ -58,9 +67,39 @@ export default defineComponent({
       required: true
     }
   },
-  methods: {
-    goToHomepage(url: string) {
+  setup(props) {
+    const favoritosStore = useFavoritesStore()
+    const { allFavorites } = storeToRefs(favoritosStore)
+
+    const show = ref(true)
+
+    const checkIfFavorited = () => {
+      if (allFavorites.value.some((el) => el.id === props.media.id)) {
+        show.value = false
+      }
+    }
+
+    onUpdated(() => {
+      favoritosStore.getFavorites()
+      checkIfFavorited()
+    })
+
+    watch(allFavorites, () => {
+      checkIfFavorited()
+    })
+
+    const goToHomepage = (url: string) => {
       window.open(url, '_blank')
+    }
+
+    const addFavorito = (media: any) => {
+      favoritosStore.addFavorite(media)
+    }
+
+    return {
+      goToHomepage,
+      addFavorito,
+      show
     }
   }
 })

@@ -13,7 +13,6 @@ export const useMediaStore = defineStore('media', {
             try {
                 const response = await axios.get(`${CONSTANTS.API_URL}/3/${type}/${id}?api_key=${CONSTANTS.API_KEY}`);
                 this.media = response.data;
-                console.log('asd', this.media)
             } catch (error) {
                 console.log(error)
             }
