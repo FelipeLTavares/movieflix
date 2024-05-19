@@ -63,6 +63,10 @@ Abra [http://localhost:5173](http://localhost:5173) para visualizar o projeto no
 
 Utiliza Pinia para gerenciamento de estado, armazenando informações sobre mídias, página atual, total de páginas, estado de carregamento e erros.
 
+## Veja online
+
+Veja o projeto online em: https://movieflix-eight-sigma.vercel.app/
+
 ## Licença
 
 Este projeto está licenciado sob a MIT License.
