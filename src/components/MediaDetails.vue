@@ -43,7 +43,7 @@
 <script lang="ts">
 import { useFavoritesStore } from '@/stores/favorites'
 import { storeToRefs } from 'pinia'
-import { defineComponent, watch, ref, onUpdated, type PropType } from 'vue'
+import { defineComponent, ref, watch, type PropType, onUpdated } from 'vue'
 
 export default defineComponent({
   name: 'MediaDetails',
@@ -63,7 +63,7 @@ export default defineComponent({
       required: true
     },
     backgroundImageStyle: {
-      type: Object as PropType<CSSStyleDeclaration>,
+      type: Object as PropType<Record<string, string>>,
       required: true
     }
   },
