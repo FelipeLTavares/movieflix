@@ -9,6 +9,7 @@
   <div v-if="error" class="w-full h-screen bg-white text-xl pt-24 flex justify-center items-center">
     {{ error }}
   </div>
+
   <main v-else class="w-full h-screen bg-indigo-300">
     <MediaDetails :backgroundImageStyle="backgroundImageStyle" :media="movie" />
   </main>
@@ -16,26 +17,26 @@
 
 <script lang="ts">
 import MediaDetails from '@/components/MediaDetails.vue'
-import { useMediaStore } from '@/stores/media'
+import { useMediaStore, type MediaApiType } from '@/stores/singleMedia'
 import { storeToRefs } from 'pinia'
 import { computed, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 export default {
-  name: 'FilmeView',
+  name: 'TesteSingleView',
 
   components: {
     MediaDetails
   },
 
   props: {
-    imageUrl: {
-      type: String,
+    type: {
+      type: String as () => MediaApiType,
       required: true
     }
   },
 
-  setup() {
+  setup(props) {
     const route = useRoute()
     const mediaStore = useMediaStore()
 
@@ -44,7 +45,7 @@ export default {
     const movie: any = ref({})
 
     onMounted(async () => {
-      await mediaStore.fetchMovie(Number(route.params.id), 'movie')
+      await mediaStore.fetchMovie(Number(route.params.id), props.type)
 
       movie.value.id = media?.value.id
       movie.value.title = media?.value.title
@@ -67,7 +68,7 @@ export default {
     return {
       media,
       movie,
-      loading,
+      loading: loading.value,
       error,
       backgroundImageStyle
     }

@@ -41,10 +41,6 @@ export default {
       type: Array as PropType<Media[]>,
       required: true
     },
-    showDelete: {
-      type: Boolean,
-      required: false
-    },
     deleteMedia: {
       type: Function,
       required: false

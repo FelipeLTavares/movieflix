@@ -9,42 +9,51 @@
   <div v-if="error" class="w-full h-screen bg-white text-xl pt-24 flex justify-center items-center">
     {{ error }}
   </div>
+
   <main v-else>
-    <MediaList :medias="series" />
-    <ListPager :currentPage="page" :totalPages="totalPages" :onPageChange="fetchAllSeries" />
+    <MediaList :medias="medias" />
+    <ListPager :currentPage="page" :totalPages="totalPages" :onPageChange="fetchMedias" />
   </main>
 </template>
 
 <script lang="ts">
 import ListPager from '@/components/ListPaginator.vue'
 import MediaList from '@/components/MediaList.vue'
-import { useSeriesStore } from '@/stores/series'
+import { useMediasStore, type TesteType } from '@/stores/medias'
 import { storeToRefs } from 'pinia'
 import { onMounted } from 'vue'
 
 export default {
-  name: 'FilmesView',
+  name: 'TesteView',
 
   components: {
     MediaList,
     ListPager
   },
 
-  setup() {
-    const seriesStore = useSeriesStore()
-    const { series, page, totalPages, loading, error } = storeToRefs(seriesStore)
+  props: {
+    type: {
+      type: String as () => TesteType,
+      required: true
+    }
+  },
+
+  setup(props) {
+    const testeStore = useMediasStore()
+
+    const { medias, page, totalPages, loading, error } = storeToRefs(testeStore)
 
     onMounted(async () => {
-      await seriesStore.fetchSeries()
+      await testeStore.fetchMedias(props.type)
     })
 
     return {
-      series,
-      loading,
+      medias,
       page,
       totalPages,
+      loading,
       error,
-      fetchAllSeries: (pageNumber: number) => seriesStore.fetchSeries(pageNumber)
+      fetchMedias: (pageNumber: number) => testeStore.fetchMedias(props.type, pageNumber)
     }
   }
 }

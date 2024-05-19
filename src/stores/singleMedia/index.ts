@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import axios from 'axios';
 import CONSTANTS from '@/constants';
 
-export type MediaApiPath = 'tv' | 'movie'
+export type MediaApiType = 'tv' | 'movie'
 
 export const useMediaStore = defineStore('media', {
     state: () => ({
@@ -11,7 +11,7 @@ export const useMediaStore = defineStore('media', {
         error: null as string | null,
     }),
     actions: {
-        async fetchMovie(id: number, type: MediaApiPath) {
+        async fetchMovie(id: number, type: MediaApiType) {
             this.loading = false;
             this.error = null;
             try {
