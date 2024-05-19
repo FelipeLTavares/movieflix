@@ -1,39 +1,68 @@
-# .
+# MovieFlix
 
-This template should help get you started developing with Vue 3 in Vite.
+Este projeto é um aplicativo Vue.js para exibir, gerenciar e visualizar filmes e séries. Utiliza Vue Router para navegação entre páginas e Pinia para gerenciamento de estado. Os usuários podem ver listas de filmes e séries, detalhes individuais e salvar favoritos.
 
-## Recommended IDE Setup
+## Tecnologias Utilizadas
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Vue.js 3
+- Vue Router
+- Pinia
+- Tailwind CSS
 
-## Type Support for `.vue` Imports in TS
+## Estrutura do Projeto
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+- `src/`
+  - `assets/` - Arquivos estáticos
+  - `components/` - Componentes reutilizáveis
+  - `views/` - Páginas do aplicativo
+  - `stores/` - Gerenciamento de estado com Pinia
+  - `App.vue` - Componente raiz
+  - `main.ts` - Arquivo de entrada principal
+  - `router/` - Configuração de rotas
+  - `styles/` - Arquivos de estilos
 
-## Customize configuration
+## Instalação
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+1. Clone o repositório:
 
-## Project Setup
+   ```sh
+   git clone https://github.com/FelipeLTavares/movieflix.git
+   ```
 
-```sh
-npm install
-```
+2. Navegue até o diretório do projeto:
 
-### Compile and Hot-Reload for Development
+   ```sh
+   cd movieflix
+   ```
+
+3. Instale as dependências:
+   ```sh
+   npm install
+   ```
+
+## Uso
+
+Para rodar o aplicativo em ambiente de desenvolvimento, utilize:
 
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+Abra [http://localhost:5173](http://localhost:5173) para visualizar o projeto no navegador.
 
-```sh
-npm run build
-```
+## Rotas
 
-### Lint with [ESLint](https://eslint.org/)
+- `/` - Lista das mídias mais populares
+- `/filmes` - Lista de filmes
+- `/series` - Lista de séries
+- `/favoritos` - Lista de favoritos
+- `/filme/:id` - Detalhes de um filme específico
+- `/serie/:id` - Detalhes de uma série específica
 
-```sh
-npm run lint
-```
+## Gerenciamento de Estado
+
+Utiliza Pinia para gerenciamento de estado, armazenando informações sobre mídias, página atual, total de páginas, estado de carregamento e erros.
+
+## Licença
+
+Este projeto está licenciado sob a MIT License.
