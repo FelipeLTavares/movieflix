@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="p-10 bg-gradient-to-r from-gray-400 to-gray-500 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 pt-24"
-  >
+  <div class="p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 pt-24">
     <div
       v-for="media in medias"
       :key="media.id"
