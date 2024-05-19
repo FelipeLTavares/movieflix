@@ -43,7 +43,7 @@
 <script lang="ts">
 import { useFavoritesStore } from '@/stores/favorites'
 import { storeToRefs } from 'pinia'
-import { defineComponent, watch, ref, onUpdated } from 'vue'
+import { defineComponent, watch, ref, onUpdated, type PropType } from 'vue'
 
 export default defineComponent({
   name: 'MediaDetails',
