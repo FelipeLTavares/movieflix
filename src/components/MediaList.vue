@@ -3,7 +3,7 @@
     <div
       v-for="media in medias"
       :key="media.id"
-      class="rounded-lg shadow-md overflow-hidden hover:scale-105 transform transition duration-300 cursor-pointer relative group"
+      class="rounded-lg shadow-md overflow-hidden hover:scale-90 transform transition duration-300 cursor-pointer relative group"
     >
       <div
         class="absolute w-8 h-8 bg-red-600 right-0 rounded-full justify-center items-center font-bold text-white flex opacity-0 group-hover:opacity-100 transition-opacity duration-300"

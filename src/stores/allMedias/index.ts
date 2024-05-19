@@ -20,7 +20,7 @@ export const useAllMediasStore = defineStore('allMedias', {
                 this.page = page;
                 this.totalPages = response.data.total_pages;
             } catch (error) {
-                this.error = (error as any).message || 'Failed to fetch medias';
+                this.error = 'Erro ao carregar os dados! :(';
             } finally {
                 this.loading = false;
             }

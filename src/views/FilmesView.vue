@@ -1,4 +1,14 @@
 <template>
+  <div
+    v-if="loading"
+    class="w-full h-screen bg-white text-xl pt-24 flex justify-center items-center"
+  >
+    Carregando....
+  </div>
+
+  <div v-if="error" class="w-full h-screen bg-white text-xl pt-24 flex justify-center items-center">
+    {{ error }}
+  </div>
   <main>
     <MediaList :medias="movies" />
     <ListPager :currentPage="page" :totalPages="totalPages" :onPageChange="fetchAllMovies" />
@@ -22,7 +32,7 @@ export default {
 
   setup() {
     const movieStore = useMoviesStore()
-    const { movies, page, totalPages } = storeToRefs(movieStore)
+    const { movies, page, totalPages, loading, error } = storeToRefs(movieStore)
 
     onMounted(async () => {
       await movieStore.fetchAllMovies()
@@ -32,6 +42,8 @@ export default {
       movies,
       page,
       totalPages,
+      loading,
+      error,
       fetchAllMovies: (pageNumber: number) => movieStore.fetchAllMovies(pageNumber)
     }
   }

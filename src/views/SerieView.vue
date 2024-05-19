@@ -1,5 +1,15 @@
 <template>
-  <main class="w-full h-screen bg-indigo-300">
+  <div
+    v-if="loading"
+    class="w-full h-screen bg-white text-xl pt-24 flex justify-center items-center"
+  >
+    Carregando....
+  </div>
+
+  <div v-if="error" class="w-full h-screen bg-white text-xl pt-24 flex justify-center items-center">
+    {{ error }}
+  </div>
+  <main v-else class="w-full h-screen bg-indigo-300">
     <MediaDetails :backgroundImageStyle="backgroundImageStyle" :media="serie" />
   </main>
 </template>
@@ -29,7 +39,7 @@ export default {
     const route = useRoute()
     const mediaStore = useMediaStore()
 
-    const { media } = storeToRefs(mediaStore)
+    const { media, loading, error } = storeToRefs(mediaStore)
 
     const serie: any = ref({})
 
@@ -57,6 +67,8 @@ export default {
     return {
       media,
       serie,
+      loading,
+      error,
       backgroundImageStyle
     }
   }

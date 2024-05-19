@@ -1,5 +1,16 @@
 <template>
-  <main>
+  <div
+    v-if="loading"
+    class="w-full h-screen bg-white text-xl pt-24 flex justify-center items-center"
+  >
+    Carregando....
+  </div>
+
+  <div v-if="error" class="w-full h-screen bg-white text-xl pt-24 flex justify-center items-center">
+    {{ error }}
+  </div>
+
+  <main v-else>
     <MediaList :medias="medias" :addFavorite="addFavorito" />
     <ListPager :currentPage="page" :totalPages="totalPages" :onPageChange="fetchAllMedias" />
   </main>
@@ -24,7 +35,7 @@ export default {
   setup() {
     const movieStore = useAllMediasStore()
     const favoritosStore = useFavoritesStore()
-    const { allMedias: medias, page, totalPages } = storeToRefs(movieStore)
+    const { allMedias: medias, page, totalPages, loading, error } = storeToRefs(movieStore)
 
     onMounted(async () => {
       await movieStore.fetchAllMedias()
@@ -34,6 +45,8 @@ export default {
       medias,
       page,
       totalPages,
+      loading,
+      error,
       fetchAllMedias: (pageNumber: number) => movieStore.fetchAllMedias(pageNumber),
       addFavorito: (fav: any) => favoritosStore.addFavorite(fav)
     }

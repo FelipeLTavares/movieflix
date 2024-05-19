@@ -1,5 +1,15 @@
 <template>
-  <main>
+  <div
+    v-if="loading"
+    class="w-full h-screen bg-white text-xl pt-24 flex justify-center items-center"
+  >
+    Carregando....
+  </div>
+
+  <div v-if="error" class="w-full h-screen bg-white text-xl pt-24 flex justify-center items-center">
+    {{ error }}
+  </div>
+  <main v-else>
     <MediaList :medias="series" />
     <ListPager :currentPage="page" :totalPages="totalPages" :onPageChange="fetchAllSeries" />
   </main>
@@ -22,7 +32,7 @@ export default {
 
   setup() {
     const seriesStore = useSeriesStore()
-    const { series, page, totalPages } = storeToRefs(seriesStore)
+    const { series, page, totalPages, loading, error } = storeToRefs(seriesStore)
 
     onMounted(async () => {
       await seriesStore.fetchSeries()
@@ -30,8 +40,10 @@ export default {
 
     return {
       series,
+      loading,
       page,
       totalPages,
+      error,
       fetchAllSeries: (pageNumber: number) => seriesStore.fetchSeries(pageNumber)
     }
   }
