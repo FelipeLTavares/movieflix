@@ -7,8 +7,8 @@
     >
       <div
         class="absolute w-8 h-8 bg-red-600 right-0 rounded-full justify-center items-center font-bold text-white flex opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        v-if="deleteMedia"
         @click="deleteMedia(media.id)"
-        v-if="showDelete"
       >
         x
       </div>
@@ -23,20 +23,24 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { useRouter } from 'vue-router'
+import type { PropType } from 'vue'
+
+interface Media {
+  id: number
+  title?: string
+  poster_path?: string
+  poster?: string
+}
 
 export default {
   name: 'MediaList',
   props: {
     medias: {
-      type: Array,
+      type: Array as PropType<Media[]>,
       required: true
     },
-    // addFavorite: {
-    //   type: Function,
-    //   required: false
-    // },
     showDelete: {
       type: Boolean,
       required: false
@@ -47,21 +51,15 @@ export default {
     }
   },
   methods: {
-    getMovieImageUrl(imagePath) {
+    getMovieImageUrl(imagePath: any) {
       return `https://image.tmdb.org/t/p/original/${imagePath}`
     }
-
-    // addFavorito(media) {
-    //   if (this.addFavorite) this.addFavorite(media)
-    // }
   },
 
   setup() {
     const router = useRouter()
 
-    
-
-    const navigateToMedia = (mediaId, mediaType) => {
+    const navigateToMedia = (mediaId: any, mediaType: any) => {
       router.push({ name: mediaType === 'filme' ? 'filme' : 'serie', params: { id: mediaId } })
     }
 

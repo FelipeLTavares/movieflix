@@ -31,7 +31,6 @@ export default {
     return {
       allFavorites,
       deleteFavorite: (id: number) => {
-        console.log('aqui')
         favoriteStore.deleteFavorite(id)
       }
     }

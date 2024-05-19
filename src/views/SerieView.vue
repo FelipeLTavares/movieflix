@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import HeaderComponent from '@/components/HeaderComponent.vue'
+import HeaderComponent from '../components/HeaderComponent.vue'
 import MediaDetails from '@/components/MediaDetails.vue'
 import { useMediaStore } from '@/stores/media'
 import { storeToRefs } from 'pinia'

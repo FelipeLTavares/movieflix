@@ -20,7 +20,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: 'ListPaginator',
   props: {
@@ -38,7 +38,7 @@ export default {
     }
   },
   methods: {
-    goToPage(page) {
+    goToPage(page: any) {
       if (page > 0 && page <= this.totalPages) {
         this.onPageChange(page)
       }
