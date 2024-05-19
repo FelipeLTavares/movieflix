@@ -6,7 +6,7 @@
       <div class="flex gap-2 text-gray-400">
         <span>{{ media.startDate }}</span>
         <span>|</span>
-        <span>{{ media.popularity }}</span>
+        <span class="text-green-400">{{ media.popularity }}</span>
         <span>|</span>
         <span>{{ media.duration }} min</span>
       </div>

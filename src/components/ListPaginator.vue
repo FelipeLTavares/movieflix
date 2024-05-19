@@ -1,5 +1,7 @@
 <template>
-  <div class="flex justify-center items-center space-x-2 mt-4 pb-4">
+  <div
+    class="bg-gradient-to-r from-gray-400 to-gray-500 flex justify-center items-center space-x-2 py-4"
+  >
     <GenericButton
       :type="'pageButton'"
       @click="goToPage(currentPage - 1)"

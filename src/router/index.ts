@@ -1,12 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-// import HomeView from '../views/HomeView.vue'
-// import FilmesView from '../views/FilmesView.vue'
-// import SeriesView from '../views/SeriesView.vue'
 import FavoritosView from '@/views/FavoritosView.vue'
-// import SerieView from '@/views/SerieView.vue'
-// import FilmeView from '@/views/FilmeView.vue'
 import MediasView from '@/views/MediasView.vue'
-// import CONSTANTS from '@/constants'
 import SingleMediaView from '@/views/SingleMediaView.vue'
 
 const router = createRouter({

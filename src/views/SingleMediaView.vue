@@ -23,7 +23,7 @@ import { computed, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 export default {
-  name: 'TesteSingleView',
+  name: 'SingleMediaView',
 
   components: {
     MediaDetails
@@ -47,10 +47,13 @@ export default {
     onMounted(async () => {
       await mediaStore.fetchMovie(Number(route.params.id), props.type)
 
+      console.log(media.value)
+
       movie.value.id = media?.value.id
-      movie.value.title = media?.value.title
-      movie.value.startDate = media?.value.release_date.slice(0, 4)
-      movie.value.duration = media?.value.episode_run_time
+      movie.value.title = media?.value.title || media?.value.name
+      movie.value.startDate =
+        media?.value.release_date?.slice(0, 4) || media?.value.first_air_date?.slice(0, 4)
+      movie.value.duration = media?.value.episode_run_time?.[0] || media?.value.runtime
       movie.value.popularity = media?.value.vote_average
       movie.value.subTitle = media?.value.tagline
       movie.value.sinopse = media?.value.overview
