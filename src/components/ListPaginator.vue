@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center items-center space-x-2 mt-4">
+  <div class="flex justify-center items-center space-x-2 mt-4 pb-4">
     <GenericButton
       :type="'pageButton'"
       @click="goToPage(currentPage - 1)"

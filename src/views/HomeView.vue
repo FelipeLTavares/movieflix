@@ -1,13 +1,13 @@
 <template>
   <main>
-    <MediaLister :medias="medias" :addFavorite="addFavorito" />
+    <MediaList :medias="medias" :addFavorite="addFavorito" />
     <ListPager :currentPage="page" :totalPages="totalPages" :onPageChange="fetchAllMedias" />
   </main>
 </template>
 
 <script lang="ts">
 import ListPager from '@/components/ListPaginator.vue'
-import MediaLister from '@/components/MediaLister.vue'
+import MediaList from '@/components/MediaList.vue'
 import { useAllMediasStore } from '@/stores/allMedias'
 import { useFavoritesStore } from '@/stores/favorites'
 import { storeToRefs } from 'pinia'
@@ -17,7 +17,7 @@ export default {
   name: 'HomeView',
 
   components: {
-    MediaLister,
+    MediaList,
     ListPager
   },
 

@@ -1,13 +1,13 @@
 <template>
   <main>
-    <MediaLister :medias="movies" />
+    <MediaList :medias="movies" />
     <ListPager :currentPage="page" :totalPages="totalPages" :onPageChange="fetchAllMovies" />
   </main>
 </template>
 
 <script lang="ts">
 import ListPager from '@/components/ListPaginator.vue'
-import MediaLister from '@/components/MediaLister.vue'
+import MediaList from '@/components/MediaList.vue'
 import { useMoviesStore } from '@/stores/movies'
 import { storeToRefs } from 'pinia'
 import { onMounted } from 'vue'
@@ -16,7 +16,7 @@ export default {
   name: 'FilmesView',
 
   components: {
-    MediaLister,
+    MediaList,
     ListPager
   },
 

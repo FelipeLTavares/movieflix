@@ -7,7 +7,7 @@
       'py-2',
       'rounded-md',
       'font-bold',
-      'bg-gray-600',
+      'bg-gray-300',
       'hover:opacity-75'
     ]"
   >
