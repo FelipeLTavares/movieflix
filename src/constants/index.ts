@@ -1,6 +1,6 @@
 const CONSTANTS = {
     API_URL: 'https://api.themoviedb.org',
-    API_KEY: '841f21ef9e7cfd7c23c9d1e28a153733',
+    API_KEY: 'b0ea1eafd6f90643d23551a52ef751f3',
     FAVORITES: 'favorites'
 };
 
