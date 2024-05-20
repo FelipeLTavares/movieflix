@@ -1,15 +1,17 @@
 <template>
-  <header class="bg-black text-white w-full p-4 pl-10 fixed z-10">
-    <div class="container flex justify-between items-center">
+  <header class="bg-black text-white w-full p-4 fixed z-10">
+    <div class="flex gap-6 justify-between md:justify-start items-center">
       <h1 class="text-2xl font-bold">MovieFlix</h1>
-      <nav class="hidden md:flex space-x-4 items-center gap-4">
-        <ul class="flex space-x-4 items-center gap-4">
+
+      <nav class="hidden md:flex items-center">
+        <ul class="flex items-center gap-4">
           <li><a href="/" class="hover:underline">Home</a></li>
           <li><a href="/filmes" class="hover:underline">Filmes</a></li>
           <li><a href="/series" class="hover:underline">Séries</a></li>
           <li><a href="/favoritos" class="hover:underline">Favoritos</a></li>
         </ul>
       </nav>
+
       <button @click="toggleMenu" class="md:hidden">
         <div class="flex flex-col gap-1">
           <div class="h-0.5 w-4 bg-white"></div>
@@ -18,6 +20,7 @@
         </div>
       </button>
     </div>
+
     <div v-if="isMenuOpen" class="fixed inset-0 flex z-20">
       <div class="bg-black bg-opacity-50 w-1/4" @click="toggleMenu"></div>
 
